@@ -1,4 +1,4 @@
-import smtplib
+mport smtplib
 import subprocess
 import datetime
 import time
@@ -13,18 +13,21 @@ while (1):
 	if (ip_get != ip_get_old):
 		ip_get_old = ip_get 
 		body = ip_get + "\n AT TIME: " + str(datetime.datetime.now())
-		gmail_user = "gmail address"  
-		gmail_password = "gmail_password"
-		from1 = "gmail address"
-		to = "gmail address" 
+		gmail_user = "w@gmail.com"  
+		gmail_password = "password"
+		from1 = "w@gmail.com"
+		to = "w@gmail.com" 
 		subject = "IP UPDATE"  
 		#email_text = "hello world"
-		email_text = """  
-		From: %s  
-		To: %s  
-		Subject: %s
-		%s
-		""" % (from1, to, subject, body)
+
+		email_text = "\r\n".join([
+			"From: w@gmail.com",
+			"To: w@gmail.com",
+			"Subject: IP UPDATE",
+			"",
+			body
+			])
+
 		try:  
 		    server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 		    server.ehlo()
